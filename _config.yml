@@ -58,5 +58,7 @@ header_pages:
   - index.markdown
   - about.markdown
 
+footer: 'theme based on <a href="https://github.com/b2a3e8/jekyll-theme-console">Jekyll Theme Console</a><br><a href="/feed.xml">rss feed</a>'
+
 kramdown:
   hard_wrap: true

@@ -80,8 +80,15 @@ These are a few tips that I've gotten from fellow Linux contributors.
 ## More resources
 
 Kernel Documentation, which is extensive. Here's a doc on how to contribute to the kernel: [HOWTO](https://www.kernel.org/doc/html/v4.16/process/howto.html)
+
 LWN.net, where you can find news from the source: [LWN](https://lwn.net)
+
 Kernel Newbies Project: [Kernel Newbies](https://kernelnewbies.org)
+
 FLUSP - FLOSS at USP: [FLUSP](https://flusp.ime.usp.br)
+
 Linux Foundation Training on Linux Kernel Development: [Linux Foundation](https://training.linuxfoundation.org/training/a-beginners-guide-to-linux-kernel-development-lfd103/)
+
 Linux Device Drivers book [LDD3](https://lwn.net/Kernel/LDD3/)
+
+Special thanks to @isinyaaa for reviewing this text and giving me a bunch of tips.
