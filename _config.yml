@@ -28,7 +28,7 @@ domain: "jakh.cyus.me"
 github_username:  vinicyusmacedo
 
 # Build settings
-theme: minima
+theme: jekyll-theme-console
 plugins:
   - jekyll-feed
 
@@ -51,3 +51,11 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+header_pages:
+  - me.markdown
+  - index.markdown
+  - about.markdown
+
+kramdown:
+  hard_wrap: true
