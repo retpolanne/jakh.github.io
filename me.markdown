@@ -8,4 +8,4 @@ permalink: /me/
 
 - Wannabe Kernel Hacker
 - Music geek
-- Kubernetes Aficionada
+- Kubernetes Aficionado
