@@ -1,0 +1,80 @@
+---
+layout: post
+title: "note-taking post – bpf kernel dev - how to begin hacking it"
+date: 2022-09-10 15:03:22 -0300
+categories: kernel-dev bpf notes
+---
+
+# note-taking post - bpf kernel dev - how to begin hacking it
+
+After spending some time lurking on the bpf mailing lists, I figured out it might be a good idea to start checking some code as well.
+So, I decided to clone the bpf-next tree and check what's in there. This way, I can see some of the patches that I've seen in the mailing list. 
+
+I've also seen some interesting issues on the libbpf mirror on Github, from OSSFUZZ. [1]
+
+{% highlight bash %}
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/
+cd bpf-next
+# Making the config for kvm
+make defconfig
+make kvm_guest.config
+# compiling
+make -j40
+# installing the new kernel
+sudo make install
+# updating grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# check everything :)
+qemu ➜  ~ uname -a
+Linux kernel-dev 6.0.0-rc3-00815-g2fae67716bb9 #1 SMP PREEMPT_DYNAMIC Sat Sep 10 15:14:27 -03 2022 x86_64 GNU/Linux
+
+# also a good idea to check google.com
+# since your interface may have its name changed
+curl google.com
+{% endhighlight %}
+
+Truth is: I don't understand this issue [1] 🤡
+
+I will take a look at the selftests then. [2]
+
+{% highlight bash %}
+# compiling tests
+make -C tools/testing/selftests
+{% endhighlight %}
+
+I saw a bunch of errors... attempted to only make the bpf tests.
+
+{% highlight bash %}
+cd tools/testing/selftests/bpf
+make
+{% endhighlight %}
+
+And more errors! Related to this [3].
+
+And I realized that I found a small bug! 
+
+{% highlight bash %}
+Error: failed to load BTF from /home/kernel-dev/bpf-next/vmlinux: Unknown error -2
+{% endhighlight %}
+
+This "Unknown error" should actually be positive to tell that the file does not exist. I tried changing it manually on the code and I got the right message.
+
+{% highlight bash %}
+Error: failed to load BTF from /home/kernel-dev/bpf-next/vmlinux: No such file or directory
+{% endhighlight %}
+
+This is how you compile the bpftool.
+
+{% highlight bash %}
+./tools/testing/selftests/bpf/test_bpftool_build.sh
+make -s -C tools/bpf/bpftool
+{% endhighlight %}
+
+Will keep you posted if this change makes its way to the kernel :).
+
+## References
+
+\[1] [libbpf #484](https://github.com/libbpf/libbpf/issues/484)
+\[2] [Linux Kernel Selftests](https://static.lwn.net/kerneldoc/dev-tools/kselftest.html)
+\[3] [bpftool: print correct error message when failing to load BTF](https://patchwork.ozlabs.org/project/netdev/patch/20200525135421.4154-1-tklauser@distanz.ch/)
