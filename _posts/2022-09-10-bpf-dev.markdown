@@ -160,6 +160,8 @@ make TARGETS="size timers" kselftest
 [Makefile:156: all] Error 1
 {% endhighlight %}
 
+Tried cding to the bpf self tests directory and ran make run_tests... it's working now? More or less since I see a bunch of errors but none fatal. Ran as sudo, creepy but it works!
+
 ## References
 
 \[1] [libbpf #484](https://github.com/libbpf/libbpf/issues/484)
