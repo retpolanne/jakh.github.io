@@ -26,6 +26,8 @@ I also tried to run the bpf selftests and, after a bunch of failures, I was able
 
 I also learned something about naming on the DCO (Developer Certificate of Origin) while researching if I could use my preferred name for contributions. Turns out I was able to beat the anxiety and started to change my preferred name on my employer's systems. More about naming [here]({% post_url 2022-09-19-naming-issues %})
 
+And, last but not least, I created a repo with all the tools and resources that a beginner kernel dev like me may need: [awesome-kerneldev](https://github.com/retpolanne/awesome-kerneldev).
+
 ## Looking for work
 
 So, I've spent a considerable amount of time lurking on the bpf mailing list. The discussions there are interesting and by checking the lists I was able to understand more or less what folks are working on and what is the mailing etiquette that you must have. Also, seeing the patches made me understand more about bits of the code that I wouldn't understand if I just stared at it. 
